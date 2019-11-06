@@ -12,6 +12,7 @@ int main(int argc, char const *argv[])
     //nao.timer.Wait(2000);
     nao.GoToPosture("Crouch");
     nao.Rest();
+    // Coment
     
     return 0;
 }
