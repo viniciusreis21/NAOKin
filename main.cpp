@@ -53,7 +53,7 @@ int main(int argc, char const *argv[])
                 nao.getPositionJoint("LArm");
             }   
         }
-        cout<< "Para setar stiffnesses da RArm = 1, para LArm =2, para sair = 0"<< endl;
+        cout<< "Para setar stiffnesses da RArm = 1, para LArm =2,para sair = 0"<< endl;
         cin >> op;
     }
     //nao.setJoints();
