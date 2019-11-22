@@ -11,6 +11,7 @@
 #include "src/external/Kofinas/NAOKinematics.h"
 #include "src/external/Kofinas/KMat.hpp"
 #include "src/Timer.h"
+#include "src/external/Kofinas/robotConsts.h"
 
 #include <map>
 #include <boost/property_tree/ptree.hpp>
@@ -18,8 +19,14 @@
 #include <boost/foreach.hpp>
 #include <stdarg.h>
 
+#include<vector> 
+
 using namespace std;
 using boost::property_tree::ptree;
+using namespace KMath::KMat;
+using namespace KDeviceLists;
+
+
 
 class NAOKin
 {
@@ -52,6 +59,10 @@ public:
   void Rest();
   void GoToPosture(string);
   void DoTrajectory();
+
+  void setJoints();
+  void getPositionJoint(string);
+  void setStiffnesses(string,bool);
 };
 
 #endif
