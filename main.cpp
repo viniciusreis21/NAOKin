@@ -16,13 +16,12 @@ int main(int argc, char const *argv[])
     NAOKin nao(string("127.0.0.1")); 
 
     nao.WakeUp(); //Wake up robot
-    nao.GoToPosture("StandInit");
-    nao.getKinematicsDirect(nao);
-    //nao.setJoints();
-    //nao.getPositionJoint("RArm");
-    //nao.DoTrajectory();
-    //nao.timer.Wait(2000);
+    nao.GoToPosture("Stand");
+    //nao.getKinematicsDirect(nao);
+    nao.getKinematicsInverse();
     nao.GoToPosture("Crouch");
     nao.Rest();
+   
+    
     return 0;
 }

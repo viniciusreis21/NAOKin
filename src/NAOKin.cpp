@@ -168,3 +168,42 @@ void NAOKin::getKinematicsDirect(NAOKin nao){
         cin >> op;
     }
 }
+
+void NAOKin::setPositions(string chainName,int space,vector<float> position,float fractionMaxSpeed,int axisMask){
+	almotion.setPositions(chainName, space, position, fractionMaxSpeed, axisMask);
+}
+
+void NAOKin::getKinematicsInverse(){
+	int space = 2;
+	vector<float> position(6, 0.0f); // Absolute Position	
+	string chainName  = "RArm";
+	float fractionMaxSpeed = 0.4f;
+	int axisMask = 7;
+	int aux;
+
+	position[3] = 0.0f;  // angulos de orientação setados em 0.
+	position[4] = 0.0f;
+	position[5] = 0.0f;
+  	
+	cout << "Digite a coordenada x desejada: " << endl;
+	cin >> position[0];
+	cout << "Digite a coordenada y desejada: " << endl;
+	cin >> position[1];
+	cout << "Digite a coordenada z desejada: " << endl;
+  	cin >> position[2];
+	
+  	almotion.setPositions(chainName, space, position, fractionMaxSpeed, axisMask);
+    qi::os::sleep(2.0f);	
+ 	cout << "Deseja conferir? 1= Sim 2=Nao" <<endl;
+	cin >> aux;
+	if(aux==1){
+		bool useSensorValues = true;
+		vector<float> result = almotion.getPosition(chainName, space, useSensorValues);
+		cout << "Position (x, y, z): " << result.at(0) << ", " << result.at(1)
+             << ", " << result.at(2) << std::endl;
+  	    /*cout << "Rotation (x, y, z): " << result.at(3) << ", " << result.at(4)
+            << ", " << result.at(5) << std::endl;*/
+		qi::os::sleep(2.0f);
+	}     
+
+}

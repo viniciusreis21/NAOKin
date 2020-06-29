@@ -45,6 +45,8 @@ public:
   void getPositionJoint(string);
   void setStiffnesses(string,bool);
   void getKinematicsDirect(NAOKin);
+  void setPositions(string,int,vector<float>,float,int);
+  void getKinematicsInverse();
 };
 
 #endif
