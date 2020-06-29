@@ -1,7 +1,0 @@
-/home/vinicius/Development/NAOKin/build-robot/CMakeFiles/install.dir
-/home/vinicius/Development/NAOKin/build-robot/CMakeFiles/list_install_components.dir
-/home/vinicius/Development/NAOKin/build-robot/CMakeFiles/rebuild_cache.dir
-/home/vinicius/Development/NAOKin/build-robot/CMakeFiles/naoKin.dir
-/home/vinicius/Development/NAOKin/build-robot/CMakeFiles/install/strip.dir
-/home/vinicius/Development/NAOKin/build-robot/CMakeFiles/install/local.dir
-/home/vinicius/Development/NAOKin/build-robot/CMakeFiles/edit_cache.dir

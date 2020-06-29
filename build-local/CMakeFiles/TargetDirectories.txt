@@ -1,7 +1,0 @@
-/home/vinicius/Development/NAOKin/build-local/CMakeFiles/install.dir
-/home/vinicius/Development/NAOKin/build-local/CMakeFiles/list_install_components.dir
-/home/vinicius/Development/NAOKin/build-local/CMakeFiles/rebuild_cache.dir
-/home/vinicius/Development/NAOKin/build-local/CMakeFiles/naoKin.dir
-/home/vinicius/Development/NAOKin/build-local/CMakeFiles/install/strip.dir
-/home/vinicius/Development/NAOKin/build-local/CMakeFiles/install/local.dir
-/home/vinicius/Development/NAOKin/build-local/CMakeFiles/edit_cache.dir
