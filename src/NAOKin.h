@@ -44,6 +44,7 @@ public:
   void setJoints();
   void getPositionJoint(string);
   void setStiffnesses(string,bool);
+  void getKinematicsDirect(NAOKin);
 };
 
 #endif
