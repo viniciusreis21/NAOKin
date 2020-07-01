@@ -99,27 +99,14 @@ void NAOKin::getPositionJoint(string joint)
 }
 void NAOKin::setStiffnesses(string nome,bool status)
 {
-	if(nome == "RArm")
+
+	if(status == 0)
 	{
-		if(status == 0)
-		{
-		  	almotion.setStiffnesses("RArm",0.0f);
-		}
-		else if(status == 1)
-		{
-			almotion.setStiffnesses("RArm",1.0f);
-		}
+		almotion.setStiffnesses(nome,0.0f);
 	}
-	else if(nome == "LArm")
+	else if(status == 1)
 	{
-		if(status == 0)
-		{
-		  	almotion.setStiffnesses("LArm",0.0f);
-		}
-		else if(status == 1)
-		{
-			almotion.setStiffnesses("LArm",1.0f);
-		}
+		almotion.setStiffnesses(nome,1.0f);
 	}
 	else
 	{
@@ -154,6 +141,23 @@ void NAOKin::getKinematicsDirect(NAOKin nao){
         else if(op==2)
         {
             cout<< "Opcao selecionada= LArm"<<endl;
+			nao.setStiffnesses("RLeg",0);
+			cout<<"Ja movimentou para a posicao desejada? 1= Sim"<<endl;
+            cin >> stif;
+			if(stif == 1)
+            {
+                nao.WakeUp();
+                nao.setJoints();
+                //nao.getPositionJoint("LArm");
+				bool useSensorValues = true;
+				string chainName = "RLeg";
+				int space =1;
+				vector<float> result = almotion.getPosition(chainName, space, useSensorValues);
+				cout << "Position (x, y, z): " << result.at(0) << ", " << result.at(1)
+				<< ", " << result.at(2) << std::endl;
+				qi::os::sleep(2.0f);
+            }   
+			/*
             nao.setStiffnesses("LArm",0);
             cout<<"Ja movimentou para a posicao desejada? 1= Sim"<<endl;
             cin >> stif;
@@ -163,6 +167,7 @@ void NAOKin::getKinematicsDirect(NAOKin nao){
                 nao.setJoints();
                 nao.getPositionJoint("LArm");
             }   
+			*/
         }
         cout<< "Para setar stiffnesses da RArm = 1, para LArm =2,para sair = 0"<< endl;
         cin >> op;
@@ -174,36 +179,49 @@ void NAOKin::setPositions(string chainName,int space,vector<float> position,floa
 }
 
 void NAOKin::getKinematicsInverse(){
-	int space = 2;
+	int space;
 	vector<float> position(6, 0.0f); // Absolute Position	
-	string chainName  = "RArm";
+	string chainName;
 	float fractionMaxSpeed = 0.4f;
 	int axisMask = 7;
+	int opcao;
 	int aux;
 
 	position[3] = 0.0f;  // angulos de orientação setados em 0.
 	position[4] = 0.0f;
 	position[5] = 0.0f;
-  	
-	cout << "Digite a coordenada x desejada: " << endl;
-	cin >> position[0];
-	cout << "Digite a coordenada y desejada: " << endl;
-	cin >> position[1];
-	cout << "Digite a coordenada z desejada: " << endl;
-  	cin >> position[2];
-	
-  	almotion.setPositions(chainName, space, position, fractionMaxSpeed, axisMask);
-    qi::os::sleep(2.0f);	
- 	cout << "Deseja conferir? 1= Sim 2=Nao" <<endl;
-	cin >> aux;
-	if(aux==1){
-		bool useSensorValues = true;
-		vector<float> result = almotion.getPosition(chainName, space, useSensorValues);
-		cout << "Position (x, y, z): " << result.at(0) << ", " << result.at(1)
-             << ", " << result.at(2) << std::endl;
-  	    /*cout << "Rotation (x, y, z): " << result.at(3) << ", " << result.at(4)
-            << ", " << result.at(5) << std::endl;*/
+  	cout << "Para escolher RArm = 1, RLeg=2, Sair =0" << endl;
+	cin >> opcao;
+	while(opcao==1 || opcao==2){
+		if(opcao == 1){
+			chainName="RArm";
+			space = 2;
+		}
+		else if(opcao==2){
+			chainName="RLeg";
+			space =0;
+		}
+		cout << "Digite a coordenada x desejada: " << endl;
+		cin >> position[0];
+		cout << "Digite a coordenada y desejada: " << endl;
+		cin >> position[1];
+		cout << "Digite a coordenada z desejada: " << endl;
+  		cin >> position[2];
 		qi::os::sleep(2.0f);
-	}     
-
+		almotion.setPositions(chainName, space, position, fractionMaxSpeed, axisMask);
+        qi::os::sleep(2.0f);/*
+		cout << "Deseja conferir? 1= Sim 2=Nao" <<endl;
+		cin >> aux;
+		if(aux==1){
+			bool useSensorValues = true;
+			vector<float> result = almotion.getPosition(chainName, space, useSensorValues);
+			cout << "Position (x, y, z): " << result.at(0) << ", " << result.at(1)
+				<< ", " << result.at(2) << std::endl;
+			/*cout << "Rotation (x, y, z): " << result.at(3) << ", " << result.at(4)
+				<< ", " << result.at(5) << std::endl;
+		qi::os::sleep(2.0f);
+		} */
+		cout << "Para escolher RArm = 1, RLeg=2, Sair =0" << endl;
+		cin >> opcao;
+	}  
 }
