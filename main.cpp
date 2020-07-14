@@ -18,7 +18,8 @@ int main(int argc, char const *argv[])
     nao.WakeUp(); //Wake up robot
     nao.GoToPosture("Stand");
     //nao.getKinematicsDirect(nao);
-    nao.getKinematicsInverse();
+    //nao.getKinematicsInverse();
+    nao.getKinematicsInverse2Arm();
     nao.GoToPosture("Crouch");
     nao.Rest();
    

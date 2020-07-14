@@ -225,3 +225,49 @@ void NAOKin::getKinematicsInverse(){
 		cin >> opcao;
 	}  
 }
+
+
+void NAOKin::getKinematicsInverse2Arm(){
+
+	vector<float> position(3, 0.0f);
+
+	cout << "Para a LArm: "<<endl << endl << endl;
+	cout << "Digite a coordenada x desejada: " << endl;
+	cin >> position[0];
+	cout << "Digite a coordenada y desejada: " << endl;
+	cin >> position[1];
+	cout << "Digite a coordenada z desejada: " << endl;
+  	cin >> position[2];
+
+	AL::ALValue pos1 = AL::ALValue::array(position[0],position[1],position[2],0.0,0.0,0.0);
+
+	cout << endl << endl << "Para a RArm: "<<endl << endl << endl;
+	cout << "Digite a coordenada x desejada: " << endl;
+	cin >> position[0];
+	cout << "Digite a coordenada y desejada: " << endl;
+	cin >> position[1];
+	cout << "Digite a coordenada z desejada: " << endl;
+  	cin >> position[2];
+	
+	AL::ALValue pos2 = AL::ALValue::array(position[0],position[1],position[2],0.0,0.0,0.0);
+
+	AL::ALValue time1 = 3.0f;
+	AL::ALValue time2 = 3.0f;
+
+
+	AL::ALValue paths;
+	paths.arrayPush(pos1);
+	paths.arrayPush(pos2);
+
+	AL::ALValue relativeTimes;
+	relativeTimes.arrayPush(time1);
+	relativeTimes.arrayPush(time2);
+
+	AL::ALValue effectorsNames = AL::ALValue::array(("LArm"),("RArm"));
+	AL::ALValue taskSpaceForAllPaths = (2);
+	AL::ALValue axisMasks = ((7),(7));
+
+	almotion.positionInterpolations(effectorsNames,taskSpaceForAllPaths,paths,axisMasks,relativeTimes);
+
+	qi::os::sleep(2.0f);
+}

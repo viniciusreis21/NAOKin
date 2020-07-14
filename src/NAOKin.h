@@ -47,6 +47,7 @@ public:
   void getKinematicsDirect(NAOKin);
   void setPositions(string,int,vector<float>,float,int);
   void getKinematicsInverse();
+  void getKinematicsInverse2Arm();
 };
 
 #endif
