@@ -40,7 +40,6 @@ public:
   void WakeUp();
   void Rest();
   void GoToPosture(string);
-  void DoTrajectory();
   void setJoints();
   void getPositionJoint(string);
   void setStiffnesses(string,bool);
