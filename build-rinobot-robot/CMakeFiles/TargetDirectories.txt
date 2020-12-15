@@ -1,7 +1,0 @@
-/home/viniciusreis/Projetos/NAOKin/build-rinobot-robot/CMakeFiles/install.dir
-/home/viniciusreis/Projetos/NAOKin/build-rinobot-robot/CMakeFiles/list_install_components.dir
-/home/viniciusreis/Projetos/NAOKin/build-rinobot-robot/CMakeFiles/rebuild_cache.dir
-/home/viniciusreis/Projetos/NAOKin/build-rinobot-robot/CMakeFiles/naoKin.dir
-/home/viniciusreis/Projetos/NAOKin/build-rinobot-robot/CMakeFiles/install/strip.dir
-/home/viniciusreis/Projetos/NAOKin/build-rinobot-robot/CMakeFiles/install/local.dir
-/home/viniciusreis/Projetos/NAOKin/build-rinobot-robot/CMakeFiles/edit_cache.dir
